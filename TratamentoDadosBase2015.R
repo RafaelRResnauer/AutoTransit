@@ -40,14 +40,14 @@ for (p in requiredPackages){
 }
 
 
-Dataset_PRF_2007 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2007")
-Dataset_PRF_2008 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2008")
-Dataset_PRF_2009 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2009")
-Dataset_PRF_2010 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2010")
-Dataset_PRF_2011 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2011")
-Dataset_PRF_2012 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2012")
-Dataset_PRF_2013 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2013")
-Dataset_PRF_2014 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2014")
+#Dataset_PRF_2007 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2007")
+#Dataset_PRF_2008 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2008")
+#Dataset_PRF_2009 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2009")
+#Dataset_PRF_2010 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2010")
+##Dataset_PRF_2011 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2011")
+#Dataset_PRF_2012 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2012")
+#Dataset_PRF_2013 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2013")
+#Dataset_PRF_2014 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2014")
 Dataset_PRF_2015 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2015")
 Dataset_PRF_2016 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2016")
 Dataset_PRF_2017 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2017")
@@ -55,28 +55,28 @@ Dataset_PRF_2018 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset 
 Dataset_PRF_2019 <- read_excel("~/Facul/10º Período/TCC 2/Dataset_raw/Dataset PRF 2007-2020.xlsx", sheet = "2019")
 
 
-View(Dataset_PRF_2007)
-View(Dataset_PRF_2008)
-View(Dataset_PRF_2009)
-View(Dataset_PRF_2010)
-View(Dataset_PRF_2011)
-View(Dataset_PRF_2012)
-View(Dataset_PRF_2013)
-View(Dataset_PRF_2014)
+#View(Dataset_PRF_2007)
+#View(Dataset_PRF_2008)
+#View(Dataset_PRF_2009)
+#View(Dataset_PRF_2010)
+#View(Dataset_PRF_2011)
+##View(Dataset_PRF_2012)
+#View(Dataset_PRF_2013)
+#View(Dataset_PRF_2014)
 View(Dataset_PRF_2015)
 View(Dataset_PRF_2016)
 View(Dataset_PRF_2017)
 View(Dataset_PRF_2018)
 View(Dataset_PRF_2019)
 
-Dataset_PRF_2007$ano <- 2007
-Dataset_PRF_2008$ano <- 2008
-Dataset_PRF_2009$ano <- 2009
-Dataset_PRF_2010$ano <- 2010
-Dataset_PRF_2011$ano <- 2011
-Dataset_PRF_2012$ano <- 2012
-Dataset_PRF_2013$ano <- 2013
-Dataset_PRF_2014$ano <- 2014
+#Dataset_PRF_2007$ano <- 2007
+#Dataset_PRF_2008$ano <- 2008
+#Dataset_PRF_2009$ano <- 2009
+#Dataset_PRF_2010$ano <- 2010
+#Dataset_PRF_2011$ano <- 2011
+#Dataset_PRF_2012$ano <- 2012
+#Dataset_PRF_2013$ano <- 2013
+#Dataset_PRF_2014$ano <- 2014
 Dataset_PRF_2015$ano <- 2015
 Dataset_PRF_2016$ano <- 2016
 Dataset_PRF_2017$ano <- 2017
@@ -84,10 +84,9 @@ Dataset_PRF_2018$ano <- 2018
 Dataset_PRF_2019$ano <- 2019
 
 Dataset_PRF_all <- rbind(
-  Dataset_PRF_2007, Dataset_PRF_2008, Dataset_PRF_2009, Dataset_PRF_2010,
-  Dataset_PRF_2011, Dataset_PRF_2012, Dataset_PRF_2013, Dataset_PRF_2014,
-  Dataset_PRF_2015, Dataset_PRF_2016, Dataset_PRF_2017, Dataset_PRF_2018, 
-  Dataset_PRF_2019)
+  #Dataset_PRF_2007, Dataset_PRF_2008, Dataset_PRF_2009, Dataset_PRF_2010,
+  #Dataset_PRF_2011, Dataset_PRF_2012, Dataset_PRF_2013, Dataset_PRF_2014,  
+  Dataset_PRF_2015, Dataset_PRF_2016, Dataset_PRF_2017, Dataset_PRF_2018, Dataset_PRF_2019)
 
 Dataset_PRF_all <- Dataset_PRF_all %>% select(-id, -horario) %>% as.matrix()
 
@@ -347,57 +346,14 @@ for(i in 1:nrow(Dataset_PRF_all)) {
 
 View(Dataset_PRF_all)
 
+X_2014_strings = subset(Dataset_PRF_all, select = -c(classificacao_acidente))
+y_2014_strings <- Dataset_PRF_all[,'classificacao_acidente'];
 
-write.table(Dataset_PRF_all, file = 'Dataset_1_1_all_strings.csv', row.names = FALSE, col.names = TRUE, sep = ";", dec = "," )
+write.table(Dataset_PRF_all, file = 'Dataset_1_1_2015_strings.csv', row.names = FALSE, col.names = TRUE, sep = ";", dec = "," )
+write.table(X_2014_strings, file = 'X_2015_strings.csv', row.names = FALSE, col.names = TRUE, sep = ";", dec = "," )
+write.table(y_2014_strings, file = 'y_2015_strings.csv', row.names = FALSE, col.names = TRUE, sep = ";", dec = "," )
+
 
 ##########################################################################################################################################
-
-
-### Normalizar strings em valores inteiros para rodar ML em python
-#
-for(i in 1:nrow(Dataset_PRF_all)) {
-  
-  #dia_semana
-  if(Dataset_PRF_all[i,'dia_semana'] == 'domingo'){
-    Dataset_PRF_all[i,'dia_semana'] = 1
-  }
-  if(Dataset_PRF_all[i,'dia_semana'] == 'segunda-feira'){
-    Dataset_PRF_all[i,'dia_semana'] = 2
-  }
-  if(Dataset_PRF_all[i,'dia_semana'] == 'terca-feira'){
-    Dataset_PRF_all[i,'dia_semana'] = 3
-  }
-  if(Dataset_PRF_all[i,'dia_semana'] == 'quarta-feira'){
-    Dataset_PRF_all[i,'dia_semana'] = 4
-  }
-  if(Dataset_PRF_all[i,'dia_semana'] == 'quinta-feira'){
-    Dataset_PRF_all[i,'dia_semana'] = 5
-  }
-  if(Dataset_PRF_all[i,'dia_semana'] == 'sexta-feira'){
-    Dataset_PRF_all[i,'dia_semana'] = 5
-  }
-  if(Dataset_PRF_all[i,'dia_semana'] == 'sabado'){
-    Dataset_PRF_all[i,'dia_semana'] = 7
-  }
-  
-  #km
-  Dataset_PRF_all[i,'km'] = as.integer(Dataset_PRF_all[i,'km'])
-  
-  #br
-  Dataset_PRF_all[i,'br'] = as.integer(Dataset_PRF_all[i,'br'])
-  
-}
-
-
-View(Dataset_PRF_all)
-
-# Reescreve a base em novos arquivos .csv
-write.csv(Dataset_PRF_all, file = "Dataset_PRF_1_0_csv_.csv", row.names = FALSE)
-write.table(Dataset_PRF_all, file = 'Dataset_1_1_all_strings.csv', row.names = FALSE, col.names = TRUE, sep = ";", dec = "," )
-
-
-### Normalização dos valores com string para números (para utilizar as técnicas de ML em python depois)
-
-
 
 
