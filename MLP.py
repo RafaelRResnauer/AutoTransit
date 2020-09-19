@@ -19,15 +19,17 @@ from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 
-csvfile = "D:\Rafael\Pendrive\Faculdade\10º semestre\TCC\Dataset_PRF_1_0_csv_600.csv"
-dataset = np.loadtxt(csvfile, delimiter=",")
+xcsvfile = "Test_2015_X.csv"
+ycsvfile = "Test_2015_Y.csv"
+datasetx = pd.read_csv(xcsvfile,header = None)
+datasety = pd.read_csv(ycsvfile,header = None)
 
-print(dataset.shape)
-
-x1=dataset[:,0:8]
-x2=dataset[:,10:24]
-X = np.concatenate((x1,x2),axis=1)
-y = dataset[:,9]
+print(datasetx.shape)
+print(datasety.shape)
+colm1 = ColumnTransformer([('encoder', OneHotEncoder(), [0,1,4,5,6,7,8,9,10,11,12])], remainder='passthrough',sparse_threshold=0)
+colm2 = ColumnTransformer([('encoder', OneHotEncoder(), [0])], remainder='passthrough',sparse_threshold=0)
+X = np.array(colm1.fit_transform(datasetx), dtype = np.str)
+y=datasety
 
 
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=.3, random_state=42, stratify=y)
