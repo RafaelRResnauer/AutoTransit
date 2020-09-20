@@ -357,9 +357,9 @@ View(Dataset_PRF_all)
 X_2017_strings = subset(Dataset_PRF_all, select = -c(classificacao_acidente))
 y_2017_strings <- Dataset_PRF_all[,'classificacao_acidente'];
 
-write.table(Dataset_PRF_all, file = 'Dataset_PRF_2017_strings.csv', row.names = FALSE, col.names = FALSE, sep = ";", dec = "," )
-write.table(X_2017_strings, file = 'X_2017_strings.csv', row.names = FALSE, col.names = FALSE, sep = ";", dec = "," )
-write.table(y_2017_strings, file = 'y_2017_strings.csv', row.names = FALSE, col.names = FALSE, sep = ";", dec = "," )
+write.table(Dataset_PRF_all, file = 'Dataset_PRF_2017_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
+write.table(X_2017_strings, file = 'X_2017_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
+write.table(y_2017_strings, file = 'y_2017_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
 
 write.csv(Dataset_PRF_all, file = "Dataset_PRF_2017_csv_.csv", row.names = FALSE)
 
