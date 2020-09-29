@@ -54,7 +54,7 @@ Testes usando Validacao Cruzada com 10 folds
 """
 
 # Criacao do classificador
-clfb = KNeighborsClassifier(n_neighbors=3, weights='distance')
+clfb = KNeighborsClassifier(n_neighbors=10, weights='distance')
 
 # Treinamento do classificador
 folds=10
