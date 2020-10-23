@@ -84,9 +84,9 @@ Dataset_PRF_2018$ano <- 2018
 Dataset_PRF_2019$ano <- 2019
 
 Dataset_PRF_all <- rbind(
-  Dataset_PRF_2007, Dataset_PRF_2008, Dataset_PRF_2009, Dataset_PRF_2010,
-  Dataset_PRF_2011, Dataset_PRF_2012, Dataset_PRF_2013, Dataset_PRF_2014,
-  Dataset_PRF_2015, Dataset_PRF_2016, Dataset_PRF_2017, Dataset_PRF_2018, 
+  #Dataset_PRF_2007, Dataset_PRF_2008, Dataset_PRF_2009, Dataset_PRF_2010,
+  #Dataset_PRF_2011, Dataset_PRF_2012, Dataset_PRF_2013, Dataset_PRF_2014, 
+  #Dataset_PRF_2015, Dataset_PRF_2016, Dataset_PRF_2017, Dataset_PRF_2018, 
   Dataset_PRF_2019)
 
 Dataset_PRF_all <- Dataset_PRF_all %>% select(-id, -horario, -data_inversa, -uf, -municipio) %>% as.matrix()
@@ -352,17 +352,15 @@ for(i in 1:nrow(Dataset_PRF_all)) {
   
 }
 
-Dataset_PRF_all_strings <- Dataset_PRF_all
-View(Dataset_PRF_all_strings)
+Dataset_PRF_2019_strings <- Dataset_PRF_all
+View(Dataset_PRF_2019_strings)
 
-X_all_strings = subset(Dataset_PRF_all_strings, select = -c(classificacao_acidente))
-y_all_strings <- Dataset_PRF_all_strings[,'classificacao_acidente'];
+X_2019_strings = subset(Dataset_PRF_2019_strings, select = -c(classificacao_acidente))
+y_2019_strings <- Dataset_PRF_2019_strings[,'classificacao_acidente'];
 
-write.table(Dataset_PRF_all_strings, file = 'Dataset_PRF_all_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
-write.table(X_all_strings, file = 'X_all_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
-write.table(y_all_strings, file = 'y_all_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
-
-write.csv(Dataset_PRF_all, file = "Dataset_PRF_all_strings_csv_.csv", row.names = FALSE)
+write.table(Dataset_PRF_2019_strings, file = 'Dataset_PRF_2019_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
+write.table(X_2019_strings, file = 'X_2019_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
+write.table(y_2019_strings, file = 'y_2019_strings.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
 
 
 ##########################################################################################################################################
@@ -569,7 +567,7 @@ for(i in 1:nrow(Dataset_PRF_all)) {
   else{
     Dataset_PRF_all[i,'tipo_acidente'] = 0
   }
-    
+  
   
   #classificacao_acidente
   if(Dataset_PRF_all[i,'classificacao_acidente'] == 'feridos_graves'){
@@ -587,8 +585,8 @@ for(i in 1:nrow(Dataset_PRF_all)) {
   else {
     Dataset_PRF_all[i,'classificacao_acidente'] = 3
   } 
-    
-    
+  
+  
   #fase_dia
   if(Dataset_PRF_all[i,'fase_dia'] == 'Amanhecer'){
     Dataset_PRF_all[i,'fase_dia'] = 1
@@ -651,7 +649,7 @@ for(i in 1:nrow(Dataset_PRF_all)) {
     Dataset_PRF_all[i,'condicao_metereologica'] = 0
   }
   
- 
+  
   #tipo_pista
   if(Dataset_PRF_all[i,'tipo_pista'] == 'Simples'){
     Dataset_PRF_all[i,'tipo_pista'] = 1
@@ -746,14 +744,15 @@ Dataset_PRF_all_numbers$ignorados <- as.numeric(as.character(Dataset_PRF_all_num
 Dataset_PRF_all_numbers$feridos <- as.numeric(as.character(Dataset_PRF_all_numbers$feridos))
 Dataset_PRF_all_numbers$veiculos <- as.numeric(as.character(Dataset_PRF_all_numbers$veiculos))
 
-View(Dataset_PRF_all_numbers)
+Dataset_PRF_2019_numbers <- Dataset_PRF_all_numbers
+View(Dataset_PRF_2017_numbers)
 
-X_all_numbers = subset(Dataset_PRF_all_numbers, select = -c(classificacao_acidente))
-y_all_numbers <- Dataset_PRF_all_numbers[,'classificacao_acidente'];
+X_2019_numbers = subset(Dataset_PRF_2019_numbers, select = -c(classificacao_acidente))
+y_2019_numbers <- Dataset_PRF_2019_numbers[,'classificacao_acidente'];
 
-write.table(Dataset_PRF_all_numbers, file = 'Dataset_PRF_all_numbers.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
-write.table(X_all_numbers, file = 'X_all_numbers.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
-write.table(y_all_numbers, file = 'y_all_numbers.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
+write.table(Dataset_PRF_2019_numbers, file = 'Dataset_PRF_2019_numbers.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
+write.table(X_2019_numbers, file = 'X_2019_numbers.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
+write.table(y_2019_numbers, file = 'y_2019_numbers.csv', row.names = FALSE, col.names = FALSE, sep = ",", dec = "." )
 
 
 ##########################################################################################################################################
