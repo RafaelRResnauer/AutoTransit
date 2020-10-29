@@ -95,6 +95,8 @@ View(Dataset_PRF_all)
 
 ##########################################################################################################################################
 
+Dataset_PRF_all_numbers <- as.data.frame(Dataset_PRF_all)
+
 ##Normalização das colunas da base de dados
 # tirar acentuação e caracteres com problemas de encode para não dar problema com a decodificação do csv
 # OBS: salvar esse script com encode UTF-8
@@ -352,7 +354,8 @@ for(i in 1:nrow(Dataset_PRF_all)) {
   
 }
 
-Dataset_PRF_2019_strings <- Dataset_PRF_all
+Dataset_PRF_2019_strings <- Dataset_PRF_all 
+
 View(Dataset_PRF_2019_strings)
 
 X_2019_strings = subset(Dataset_PRF_2019_strings, select = -c(classificacao_acidente))
@@ -720,8 +723,6 @@ for(i in 1:nrow(Dataset_PRF_all)) {
   
 }
 
-Dataset_PRF_all_numbers <- as.data.frame(Dataset_PRF_all)
-
 Dataset_PRF_all_numbers$dia_semana <- as.numeric(as.character(Dataset_PRF_all_numbers$dia_semana))
 Dataset_PRF_all_numbers$br <- as.numeric(as.character(Dataset_PRF_all_numbers$br))
 Dataset_PRF_all_numbers$km <- as.numeric(as.character(Dataset_PRF_all_numbers$km))
@@ -744,8 +745,8 @@ Dataset_PRF_all_numbers$ignorados <- as.numeric(as.character(Dataset_PRF_all_num
 Dataset_PRF_all_numbers$feridos <- as.numeric(as.character(Dataset_PRF_all_numbers$feridos))
 Dataset_PRF_all_numbers$veiculos <- as.numeric(as.character(Dataset_PRF_all_numbers$veiculos))
 
-Dataset_PRF_2019_numbers <- Dataset_PRF_all_numbers
-View(Dataset_PRF_2017_numbers)
+Dataset_PRF_2019_numbers <- Dataset_PRF_all_numbers %>% select(-mortos, -feridos_leves, -feridos_graves, -ilesos, -ignorados, -feridos) %>% as.matrix()
+View(Dataset_PRF_2019_numbers)
 
 X_2019_numbers = subset(Dataset_PRF_2019_numbers, select = -c(classificacao_acidente))
 y_2019_numbers <- Dataset_PRF_2019_numbers[,'classificacao_acidente'];

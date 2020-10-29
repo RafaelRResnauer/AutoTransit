@@ -748,6 +748,8 @@ Dataset_PRF_all_numbers$veiculos <- as.numeric(as.character(Dataset_PRF_all_numb
 
 View(Dataset_PRF_all_numbers)
 
+Dataset_PRF_all_numbers <- Dataset_PRF_all_numbers %>% select(-mortos, -feridos_leves, -feridos_graves, -ilesos, -ignorados, -feridos) %>% as.matrix()
+
 X_all_numbers = subset(Dataset_PRF_all_numbers, select = -c(classificacao_acidente))
 y_all_numbers <- Dataset_PRF_all_numbers[,'classificacao_acidente'];
 
