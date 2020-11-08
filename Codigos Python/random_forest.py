@@ -31,7 +31,7 @@ Testes usando Holdout
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=.3, random_state=42, stratify=y)
 
 # Criacao do classificador
-clfa = RandomForestClassifier(max_depth=2, random_state=0)
+clfa = RandomForestClassifier(n_estimators = 400, max_depth = 39, min_samples_split = 2, min_samples_leaf = 2, max_features = 'auto', random_state=0)
 
 # Treinamento do classificador
 clfa = clfa.fit(X_train, y_train.values.ravel())
@@ -53,7 +53,7 @@ Testes usando Validacao Cruzada com 10 folds
 """
 
 # Criacao do classificador
-clfb = RandomForestClassifier(max_depth=2, random_state=0)
+clfb = RandomForestClassifier(n_estimators = 400, max_depth = 39, min_samples_split = 2, min_samples_leaf = 2, max_features = 'auto', random_state=0)
 
 # Treinamento do classificador
 folds=10
