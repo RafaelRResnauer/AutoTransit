@@ -748,7 +748,8 @@ Dataset_PRF_all_numbers$feridos <- as.numeric(as.character(Dataset_PRF_all_numbe
 Dataset_PRF_all_numbers$veiculos <- as.numeric(as.character(Dataset_PRF_all_numbers$veiculos))
 
 #Dataset_PRF_2019_numbers <- Dataset_PRF_all_numbers %>% select(-mortos, -feridos_leves, -feridos_graves, -ilesos, -ignorados, -feridos) %>% as.matrix()
-Dataset_PRF_2019_numbers <- Dataset_PRF_all_numbers %>% select(-feridos_leves, -feridos_graves, -ignorados, -feridos) %>% as.matrix()
+#Dataset_PRF_2019_numbers <- Dataset_PRF_all_numbers %>% select(-feridos_leves, -feridos_graves, -ignorados, -feridos) %>% as.matrix()
+Dataset_PRF_2019_numbers <- Dataset_PRF_all_numbers %>% select(-feridos_leves, -ignorados, -feridos) %>% as.matrix()
 View(Dataset_PRF_2019_numbers)
 
 X_2019_numbers = subset(Dataset_PRF_2019_numbers, select = -c(classificacao_acidente))

@@ -16,8 +16,11 @@ from sklearn.model_selection import train_test_split
 
 # Importar os dados da base
 print("KNN")
-xcsvfile = "X_2017_numbers.csv"
-ycsvfile = "y_2017_numbers.csv"
+ano = "2015"
+path = "Dataset 6.0.0/"
+xcsvfile = path + "X_" + ano + "_numbers.csv"
+ycsvfile = path + "y_" + ano + "_numbers.csv"
+print(xcsvfile)
 datasetx = pd.read_csv(xcsvfile,header = None)
 datasety = pd.read_csv(ycsvfile,header = None)
 print(datasetx.shape)
