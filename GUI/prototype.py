@@ -12,6 +12,13 @@ from sklearn.neural_network import MLPClassifier
 
 mlp_filename = 'MLP_Classifier.pkl'
 clfa_loaded = pickle.load(open(mlp_filename,'rb'))
+thisdict =	{
+  1: "Feridos Graves",
+  2: "Feridos Leves",
+  3: "Ilesos",
+  4: "Mortos"
+}
+results=[]
 
 # First the window layout in 2 columns
 file_list_column = [
@@ -123,7 +130,7 @@ while True:
 
             )
 
-            window["-TOUT-"].update(filename)
+            window["-TOUT-"].update(os.path.split(filename)[1])
             
             dataset = pd.read_csv(filename,header = None)
             shape = dataset.shape
@@ -131,10 +138,12 @@ while True:
                 X = dataset
                 # Resultados dos testes
                 predicted=clfa_loaded.predict(X)
+                for x in predicted:
+                    results.append(thisdict.get(x))
             else:
                 predicted = 'Tipo de arquivo incorreto'
 
-            window["-RESULT-"].update(predicted)
+            window["-RESULT-"].update(results)
 
 
         except:
