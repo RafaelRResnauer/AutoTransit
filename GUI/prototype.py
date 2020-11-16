@@ -10,8 +10,11 @@ import pickle
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
 
+# Abrir o classificador treinado
 mlp_filename = 'MLP_Classifier.pkl'
 clfa_loaded = pickle.load(open(mlp_filename,'rb'))
+
+# Dicionario para a classificação
 thisdict =	{
   1: "Feridos Graves",
   2: "Feridos Leves",
@@ -20,7 +23,7 @@ thisdict =	{
 }
 results=[]
 
-# First the window layout in 2 columns
+# Layout da coluna de selecao de arquivos
 file_list_column = [
 
     [
@@ -46,9 +49,9 @@ file_list_column = [
 ]
 
 
-# For now will only show the name of the file that was chosen
+# Layout da coluna de resultados da classificacao
 
-image_viewer_column = [
+result_viewer_column = [
 
     [sg.Text("Escolha o dataset que deseja classificar:")],
 
@@ -59,7 +62,7 @@ image_viewer_column = [
 ]
 
 
-# ----- Full layout -----
+# Layout completo
 
 layout = [
 
@@ -69,17 +72,17 @@ layout = [
 
         sg.VSeperator(),
 
-        sg.Column(image_viewer_column),
+        sg.Column(result_viewer_column),
 
     ]
 
 ]
 
 
-window = sg.Window("Classificador", layout)
+window = sg.Window("Autotransit", layout)
 
 
-# Run the Event Loop
+# Loop de evento
 
 while True:
 
@@ -89,7 +92,7 @@ while True:
 
         break
 
-    # Folder name was filled in, make a list of files in the folder
+    # Nome da pasta foi inserida e cria uma lista de arquivos da pasta
 
     if event == "-FOLDER-":
 
@@ -97,7 +100,7 @@ while True:
 
         try:
 
-            # Get list of files in folder
+            # Pega a lista de arquivos da pasta
 
             file_list = os.listdir(folder)
 
@@ -120,7 +123,7 @@ while True:
 
         window["-FILE LIST-"].update(fnames)
 
-    elif event == "-FILE LIST-":  # A file was chosen from the listbox
+    elif event == "-FILE LIST-":  # Um arquivo foi escolhido
 
         try:
 
@@ -132,11 +135,13 @@ while True:
 
             window["-TOUT-"].update(os.path.split(filename)[1])
             
+            # Dataset e aberto, verificado se tem o formato correto,
+            # classificado e seu resultado int e convertido em string via dicionario
             dataset = pd.read_csv(filename,header = None)
             shape = dataset.shape
             if(shape[1] == 17):
                 X = dataset
-                # Resultados dos testes
+                # Resultados
                 predicted=clfa_loaded.predict(X)
                 for x in predicted:
                     results.append(thisdict.get(x))
