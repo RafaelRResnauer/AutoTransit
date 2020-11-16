@@ -15,11 +15,8 @@ from sklearn.model_selection import train_test_split
 
 # Importar os dados da base
 print("KNN Weighted")
-ano = "2015"
-path = "Dataset 6.0.0/"
-xcsvfile = path + "X_" + ano + "_numbers.csv"
-ycsvfile = path + "y_" + ano + "_numbers.csv"
-print(xcsvfile)
+xcsvfile = "X_2015_numbers.csv"
+ycsvfile = "y_2015_numbers.csv"
 datasetx = pd.read_csv(xcsvfile,header = None)
 datasety = pd.read_csv(ycsvfile,header = None)
 print(datasetx.shape)
@@ -48,7 +45,7 @@ score=clfa.score(X_test, y_test)
 
 # Criacao da matriz de confusao
 matrix = confusion_matrix(y_test, predicted)
-print("Accuracia = %.2f " % score)
+print("Accuracia = %.4f " % score)
 print("Matriz de confusao:")
 print(matrix)
 
@@ -65,8 +62,8 @@ result = cross_val_score(clfb, X, y.values.ravel(), cv=folds)
 
 # Resultados numericos
 print("\nResultado da validacao cruzada com %d folds:" % folds)
-print("Acuracia media: %.2f" % result.mean())
-print("Desvio Padrao: %.2f" % result.std())
+print("Acuracia media: %.4f" % result.mean())
+print("Desvio Padrao: %.4f" % result.std())
 
 # Matriz de confusao
 Z = cross_val_predict(clfb, X, y.values.ravel(), cv=folds)

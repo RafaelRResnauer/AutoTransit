@@ -15,12 +15,8 @@ from sklearn.model_selection import train_test_split
 
 # Importar os dados da base
 print("Decision Tree")
-ano = "2015"
-path = "Dataset 6.0.0/"
-#path = ""
-xcsvfile = path + "X_" + ano + "_numbers.csv"
-ycsvfile = path + "y_" + ano + "_numbers.csv"
-print(xcsvfile)
+xcsvfile = "X_2015_numbers.csv"
+ycsvfile = "y_2015_numbers.csv"
 datasetx = pd.read_csv(xcsvfile,header = None)
 datasety = pd.read_csv(ycsvfile,header = None)
 print(datasetx.shape)
@@ -36,7 +32,7 @@ Testes usando Holdout
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=.3, random_state=42, stratify=y)
 
 # Criacao do classificador
-clfa = tree.DecisionTreeClassifier(max_depth=17, min_samples_leaf=2, min_samples_split=60)
+clfa = tree.DecisionTreeClassifier(criterion='gini',splitter='best', max_depth=9, min_samples_leaf=30, min_samples_split=2)
 
 # Treinamento do classificador
 clfa = clfa.fit(X_train, y_train)
@@ -49,7 +45,7 @@ score=clfa.score(X_test, y_test)
 
 # Criacao da matriz de confusao
 matrix = confusion_matrix(y_test, predicted)
-print("Accuracia = %.5f " % score)
+print("Accuracia = %.4f " % score)
 print("Matriz de confusao:")
 print(matrix)
 
@@ -65,8 +61,8 @@ result = cross_val_score(clfb, X, y, cv=folds)
 
 # Resultados numericos
 print("\nResultado da validacao cruzada com %d folds:" % folds)
-print("Acuracia media: %.5f" % result.mean())
-print("Desvio Padrao: %.5f" % result.std())
+print("Acuracia media: %.4f" % result.mean())
+print("Desvio Padrao: %.4f" % result.std())
 
 # Matriz de confusao
 Z = cross_val_predict(clfb, X, y, cv=folds)
